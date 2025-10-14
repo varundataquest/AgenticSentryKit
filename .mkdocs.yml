@@ -1,0 +1,26 @@
+site_name: SentryKit Docs
+site_url: https://example.com/sentrykit
+repo_url: https://example.com/sentrykit/repo
+theme:
+  name: material
+nav:
+  - Overview: index.md
+  - Installation: installation.md
+  - Core API: core_api.md
+  - Checkers: checkers.md
+  - Adapters: adapters.md
+  - Examples: examples.md
+  - Security & Privacy: security.md
+  - Changelog: changelog.md
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            docstring_style: google
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true

@@ -1,0 +1,2 @@
+sentrykit[strands]
+pyyaml
