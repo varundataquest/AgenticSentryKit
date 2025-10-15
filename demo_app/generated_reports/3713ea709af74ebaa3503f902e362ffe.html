@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SentryKit Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .summary { border-bottom: 1px solid #ccc; margin-bottom: 1rem; padding-bottom: 1rem; }
+    .blocked { color: #b00020; }
+    .allowed { color: #0a7d0a; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; }
+    th { background: #f4f4f4; text-align: left; }
+    .severity-high { color: #b00020; font-weight: bold; }
+    .severity-medium { color: #ff8c00; font-weight: bold; }
+    .severity-low { color: #666; }
+  </style>
+</head>
+<body>
+  <div class="summary">
+    <h1>SentryKit Evaluation</h1>
+    <p>Status: <span class="blocked">Blocked</span></p>
+    <p>Risk score: 3.00</p>
+    <p>Reason: data_leak; jailbreak</p>
+  </div>
+  <table><thead><tr><th>Kind</th><th>Severity</th><th>Details</th><th>Evidence</th></tr></thead><tbody><tr><td>jailbreak</td><td class='severity-high'>High</td><td>Detected jailbreak directive: unlock hidden mode</td><td><ul><li><strong>phrase:</strong> unlock hidden mode</li></ul></td></tr><tr><td>jailbreak</td><td class='severity-high'>High</td><td>Detected jailbreak directive: no rules apply</td><td><ul><li><strong>phrase:</strong> no rules apply</li></ul></td></tr><tr><td>data_leak</td><td class='severity-high'>High</td><td>Detected potential secret in output</td><td><ul><li><strong>value:</strong> ***************5678</li></ul></td></tr></tbody></table>
+</body>
+</html>

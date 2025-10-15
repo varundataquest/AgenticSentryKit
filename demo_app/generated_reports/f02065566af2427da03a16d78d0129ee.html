@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SentryKit Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .summary { border-bottom: 1px solid #ccc; margin-bottom: 1rem; padding-bottom: 1rem; }
+    .blocked { color: #b00020; }
+    .allowed { color: #0a7d0a; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; }
+    th { background: #f4f4f4; text-align: left; }
+    .severity-high { color: #b00020; font-weight: bold; }
+    .severity-medium { color: #ff8c00; font-weight: bold; }
+    .severity-low { color: #666; }
+  </style>
+</head>
+<body>
+  <div class="summary">
+    <h1>SentryKit Evaluation</h1>
+    <p>Status: <span class="allowed">Allowed</span></p>
+    <p>Risk score: 1.00</p>
+    <p>Reason: hallucination</p>
+  </div>
+  <table><thead><tr><th>Kind</th><th>Severity</th><th>Details</th><th>Evidence</th></tr></thead><tbody><tr><td>hallucination</td><td class='severity-high'>High</td><td>Claim lacks verifiable evidence: Role pays $5,200 per month</td><td><ul><li><strong>statement:</strong> Role pays $5,200 per month</li><li><strong>urls:</strong> https://jobs.example.com/austin/123</li><li><strong>errors:</strong> fetch_error:Failed to fetch https://jobs.example.com/austin/123: &lt;urlopen error [Errno 8] nodename nor servname provided, or not known&gt;</li></ul></td></tr></tbody></table>
+</body>
+</html>

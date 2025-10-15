@@ -276,11 +276,22 @@ SentryKit maps cleanly to common governance frameworks:
    pip install -e ".[langchain]"
    python examples/langchain_demo/demo.py
    ```
-5. **Launch the interactive guard UI**
+5. **Launch the interactive demo UI**
    ```bash
    pip install -e ".[demo]"  # install FastAPI + uvicorn extras if not done already
-   make demo-ui  # serves http://localhost:8000 with scenario buttons
+   ./scripts/run_demo_ui.sh  # serves http://127.0.0.1:8765
    ```
+   
+   The demo UI provides three interactive test scenarios:
+   - **Test 1: Job Search Agent** - Detects goal drift when agent ignores location/pay constraints
+   - **Test 2: Research Agent** - Shows clean, verified data passing all security checks
+   - **Test 3: Security Report Agent** - Blocks data leaks and jailbreak attempts
+   
+   Each scenario has two buttons:
+   - Green buttons = Safe behavior (should pass)
+   - Red buttons = Attack/threat (should be blocked)
+   
+   Click any button to see real-time security analysis with detailed findings and audit reports.
 
 ## Contributing
 

@@ -7,41 +7,53 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <header class="sk-header">
-        <h1>SentryKit Guard Demo</h1>
-        <p>
-            Explore how deterministic guardrails flag risky agent behaviour across very different goals.
-            Pick a scenario, choose a variant, and watch the guard engine evaluate the run in real time.
+    <!-- Simple Header -->
+    <header class="hero">
+        <h1>🛡️ SentryKit Demo</h1>
+        <p class="hero-subtitle">
+            Protecting AI Agents from Security Threats
         </p>
+        <div class="instruction-box">
+            <strong>👇 Click any button below to test</strong><br>
+            Green buttons = Safe behavior (should pass) • Red buttons = Attack (should be blocked)
+        </div>
     </header>
+
     <main id="sk-app" data-scenarios='{{ scenario_index|safe }}'>
-        <section class="sk-scenarios">
-            <h2>Scenario gallery</h2>
-            <div class="sk-scenario-grid" id="scenario-grid"></div>
-        </section>
-        <section class="sk-results">
-            <div class="sk-results__placeholder" id="results-placeholder">
-                <h2>Ready to evaluate</h2>
-                <p>Select a scenario variant to generate findings.</p>
-            </div>
-            <article class="sk-results__card hidden" id="results-card">
-                <div class="sk-results__header">
-                    <h2 id="result-title"></h2>
-                    <span class="sk-badge" id="result-status"></span>
+        <div class="demo-container">
+            <!-- Test Scenarios -->
+            <section class="scenarios-panel">
+                <h2>Test Scenarios</h2>
+                <div class="sk-scenario-grid" id="scenario-grid"></div>
+            </section>
+
+            <!-- Results -->
+            <section class="results-panel">
+                <h2>Result</h2>
+                
+                <!-- Placeholder State -->
+                <div class="sk-results__placeholder" id="results-placeholder">
+                    <p style="font-size: 1.2rem; color: #94a3b8;">👈 Click a button to see results</p>
                 </div>
-                <p class="sk-results__reason" id="result-reason"></p>
-                <div class="sk-score" id="result-score"></div>
-                <div class="sk-findings" id="result-findings"></div>
-                <div class="sk-report-link" id="result-report"></div>
-            </article>
-        </section>
+
+                <!-- Results Card -->
+                <article class="sk-results__card hidden" id="results-card">
+                    <div class="result-header">
+                        <h3 id="result-title"></h3>
+                        <span class="sk-badge" id="result-status"></span>
+                    </div>
+                    
+                    <div class="result-body">
+                        <p id="result-reason"></p>
+                        <div id="result-score"></div>
+                        <div class="sk-findings" id="result-findings"></div>
+                        <div class="sk-report-link" id="result-report"></div>
+                    </div>
+                </article>
+            </section>
+        </div>
     </main>
-    <footer class="sk-footer">
-        <small>
-            Run locally with <code>uvicorn demo_app.main:app --reload</code>,
-            then open <code>http://localhost:8000</code>. Each evaluation caches an auditable report you can share.
-        </small>
-    </footer>
+
     <script src="/static/app.js" type="module"></script>
 </body>
 </html>
