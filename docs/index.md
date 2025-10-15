@@ -12,3 +12,12 @@ Unlike opaque classifiers, the runtime relies on deterministic heuristics and ex
 - Adapters for popular agent frameworks so one set of rules covers multiple stacks
 
 Head to the [examples](examples.md) section for offline demos or explore the [core API](core_api.md) reference for integration details.
+
+## Interactive demo
+
+Install the optional `demo` extra and launch the FastAPI UI to walk through three contrasting agent scenarios. Each button spins up a `GuardEngine` evaluation, highlights the triggered findings, and links to the rendered HTML audit report.
+
+```bash
+pip install -e ".[demo]"
+uvicorn demo_app.main:app --reload
+```

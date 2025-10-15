@@ -31,6 +31,10 @@ docs = [
     "mkdocs-material>=9.5",
     "mkdocstrings[python]>=0.24",
 ]
+demo = [
+    "fastapi>=0.112",
+    "uvicorn[standard]>=0.30",
+]
 dev = [
     "coverage[toml]>=7.4",
     "mypy>=1.8",

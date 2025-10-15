@@ -260,7 +260,7 @@ SentryKit maps cleanly to common governance frameworks:
 1. **Install dependencies**
    ```bash
    python -m venv .venv && source .venv/bin/activate
-   pip install -e ".[dev,docs]"
+   pip install -e ".[dev,docs]"  # Append ,demo if you plan to run the web UI showcase
    ```
 2. **Run tests and coverage**
    ```bash
@@ -276,7 +276,12 @@ SentryKit maps cleanly to common governance frameworks:
    pip install -e ".[langchain]"
    python examples/langchain_demo/demo.py
    ```
+5. **Launch the interactive guard UI**
+   ```bash
+   pip install -e ".[demo]"  # install FastAPI + uvicorn extras if not done already
+   make demo-ui  # serves http://localhost:8000 with scenario buttons
+   ```
 
 ## Contributing
 
-We welcome issues and pull requests. Review [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community expectations before opening a change.
+We welcome issues and pull requests—file an issue with context, follow the guardrails outlined above, and make sure `pytest` stays green before opening a PR.

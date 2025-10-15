@@ -1,4 +1,4 @@
-.PHONY: setup fmt lint mypy test cov docs demo
+.PHONY: setup fmt lint mypy test cov docs demo demo-ui
 
 setup:
 	python -m pip install --upgrade pip
@@ -24,3 +24,6 @@ docs:
 
 demo:
 	python examples/openai_agents_demo/demo.py
+
+demo-ui:
+	uvicorn demo_app.main:app --reload
