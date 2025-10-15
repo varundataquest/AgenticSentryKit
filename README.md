@@ -84,6 +84,35 @@ from sentrykit.models import (
 )
 ```
 
+### Handling unpredictable requests
+
+SentryKit evaluates whichever run metadata you hand it, so you can guard a general-purpose assistant without knowing the prompt ahead of time. Wrap your agent execution, build a `RunInput` from the live request, and let policy decide whether to ship or escalate.
+
+```python
+def guard_agent_run(user_query: str, retrieved_docs: list[str], tool_calls: list[ToolCall], answer: str) -> dict:
+    policy = Policy(
+        block_on={"data_leak", "context_poisoning", "tool_firewall", "jailbreak", "hallucination"},
+        allowed_tool_names={"http_get", "vector_lookup"},
+    )
+
+    engine = GuardEngine(policy)
+    run = RunInput(
+        goal=user_query,
+        constraints=[],
+        messages=[("user", user_query)],
+        contexts=[ContextChunk(source=f"retrieved:{i}", text=doc) for i, doc in enumerate(retrieved_docs)],
+        tool_calls=tool_calls,
+        output=RunOutput(text=answer),
+    )
+
+    verdict = engine.evaluate(run)
+    if verdict.blocked:
+        return {"status": "escalate", "reason": verdict.reason, "findings": verdict.findings}
+    return {"status": "deliver", "answer": answer}
+```
+
+You can tweak the policy on the fly—if a request includes “pay $5,000”, clone the policy and set `min_pay_threshold` just for that run—without changing the guard engine wiring.
+
 ### Goal drift
 
 The drift checker compares the agent’s output against goals, constraints, pay thresholds, and optional company-size rules.
